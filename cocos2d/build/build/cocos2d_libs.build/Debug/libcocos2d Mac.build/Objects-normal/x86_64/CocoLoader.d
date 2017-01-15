@@ -1,0 +1,24 @@
+dependencies: \
+  /Users/dfeles/Downloads/cocos2d-x-3.14/NEW_PROJECTS_DIR/MyGame/cocos2d/cocos/editor-support/cocostudio/CocoLoader.cpp \
+  /Users/dfeles/Downloads/cocos2d-x-3.14/NEW_PROJECTS_DIR/MyGame/cocos2d/build/../cocos/editor-support/cocostudio/CocoLoader.h \
+  /Users/dfeles/Downloads/cocos2d-x-3.14/NEW_PROJECTS_DIR/MyGame/cocos2d/build/../external/json/document-wrapper.h \
+  /Users/dfeles/Downloads/cocos2d-x-3.14/NEW_PROJECTS_DIR/MyGame/cocos2d/build/../external/json/rapidjson.h \
+  /Users/dfeles/Downloads/cocos2d-x-3.14/NEW_PROJECTS_DIR/MyGame/cocos2d/build/../external/json/document.h \
+  /Users/dfeles/Downloads/cocos2d-x-3.14/NEW_PROJECTS_DIR/MyGame/cocos2d/build/../external/json/reader.h \
+  /Users/dfeles/Downloads/cocos2d-x-3.14/NEW_PROJECTS_DIR/MyGame/cocos2d/build/../external/json/allocators.h \
+  /Users/dfeles/Downloads/cocos2d-x-3.14/NEW_PROJECTS_DIR/MyGame/cocos2d/build/../external/json/stream.h \
+  /Users/dfeles/Downloads/cocos2d-x-3.14/NEW_PROJECTS_DIR/MyGame/cocos2d/build/../external/json/encodings.h \
+  /Users/dfeles/Downloads/cocos2d-x-3.14/NEW_PROJECTS_DIR/MyGame/cocos2d/build/../external/json/encodedstream.h \
+  /Users/dfeles/Downloads/cocos2d-x-3.14/NEW_PROJECTS_DIR/MyGame/cocos2d/build/../external/json/memorystream.h \
+  /Users/dfeles/Downloads/cocos2d-x-3.14/NEW_PROJECTS_DIR/MyGame/cocos2d/build/../external/json/internal/meta.h \
+  /Users/dfeles/Downloads/cocos2d-x-3.14/NEW_PROJECTS_DIR/MyGame/cocos2d/build/../external/json/internal/stack.h \
+  /Users/dfeles/Downloads/cocos2d-x-3.14/NEW_PROJECTS_DIR/MyGame/cocos2d/build/../external/json/internal/swap.h \
+  /Users/dfeles/Downloads/cocos2d-x-3.14/NEW_PROJECTS_DIR/MyGame/cocos2d/build/../external/json/internal/strtod.h \
+  /Users/dfeles/Downloads/cocos2d-x-3.14/NEW_PROJECTS_DIR/MyGame/cocos2d/build/../external/json/internal/ieee754.h \
+  /Users/dfeles/Downloads/cocos2d-x-3.14/NEW_PROJECTS_DIR/MyGame/cocos2d/build/../external/json/internal/biginteger.h \
+  /Users/dfeles/Downloads/cocos2d-x-3.14/NEW_PROJECTS_DIR/MyGame/cocos2d/build/../external/json/internal/diyfp.h \
+  /Users/dfeles/Downloads/cocos2d-x-3.14/NEW_PROJECTS_DIR/MyGame/cocos2d/build/../external/json/internal/pow10.h \
+  /Users/dfeles/Downloads/cocos2d-x-3.14/NEW_PROJECTS_DIR/MyGame/cocos2d/build/../external/json/error/error.h \
+  /Users/dfeles/Downloads/cocos2d-x-3.14/NEW_PROJECTS_DIR/MyGame/cocos2d/build/../external/json/internal/strfunc.h \
+  /Users/dfeles/Downloads/cocos2d-x-3.14/NEW_PROJECTS_DIR/MyGame/cocos2d/build/../external/json/internal/../stream.h \
+  /Users/dfeles/Downloads/cocos2d-x-3.14/NEW_PROJECTS_DIR/MyGame/cocos2d/build/../cocos/editor-support/cocostudio/CocosStudioExport.h

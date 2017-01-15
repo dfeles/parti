@@ -1,0 +1,20 @@
+dependencies: \
+  /Users/dfeles/Downloads/cocos2d-x-3.14/NEW_PROJECTS_DIR/MyGame/cocos2d/external/bullet/BulletMultiThreaded/btGpu3DGridBroadphase.cpp \
+  /Users/dfeles/Downloads/cocos2d-x-3.14/NEW_PROJECTS_DIR/MyGame/cocos2d/build/../external/bullet/BulletMultiThreaded/btGpuDefines.h \
+  /Users/dfeles/Downloads/cocos2d-x-3.14/NEW_PROJECTS_DIR/MyGame/cocos2d/build/../external/bullet/BulletMultiThreaded/btGpuUtilsSharedDefs.h \
+  /Users/dfeles/Downloads/cocos2d-x-3.14/NEW_PROJECTS_DIR/MyGame/cocos2d/build/../external/bullet/BulletMultiThreaded/btGpuUtilsSharedCode.h \
+  /Users/dfeles/Downloads/cocos2d-x-3.14/NEW_PROJECTS_DIR/MyGame/cocos2d/build/../external/bullet/LinearMath/btAlignedAllocator.h \
+  /Users/dfeles/Downloads/cocos2d-x-3.14/NEW_PROJECTS_DIR/MyGame/cocos2d/build/../external/bullet/LinearMath/btScalar.h \
+  /Users/dfeles/Downloads/cocos2d-x-3.14/NEW_PROJECTS_DIR/MyGame/cocos2d/build/../external/bullet/LinearMath/btQuickprof.h \
+  /Users/dfeles/Downloads/cocos2d-x-3.14/NEW_PROJECTS_DIR/MyGame/cocos2d/build/../external/bullet/BulletCollision//BroadphaseCollision/btOverlappingPairCache.h \
+  /Users/dfeles/Downloads/cocos2d-x-3.14/NEW_PROJECTS_DIR/MyGame/cocos2d/build/../external/bullet/BulletCollision//BroadphaseCollision/btBroadphaseInterface.h \
+  /Users/dfeles/Downloads/cocos2d-x-3.14/NEW_PROJECTS_DIR/MyGame/cocos2d/build/../external/bullet/BulletCollision//BroadphaseCollision/btBroadphaseProxy.h \
+  /Users/dfeles/Downloads/cocos2d-x-3.14/NEW_PROJECTS_DIR/MyGame/cocos2d/build/../external/bullet/LinearMath/btVector3.h \
+  /Users/dfeles/Downloads/cocos2d-x-3.14/NEW_PROJECTS_DIR/MyGame/cocos2d/build/../external/bullet/LinearMath/btMinMax.h \
+  /Users/dfeles/Downloads/cocos2d-x-3.14/NEW_PROJECTS_DIR/MyGame/cocos2d/build/../external/bullet/BulletCollision//BroadphaseCollision/btOverlappingPairCallback.h \
+  /Users/dfeles/Downloads/cocos2d-x-3.14/NEW_PROJECTS_DIR/MyGame/cocos2d/build/../external/bullet/LinearMath/btAlignedObjectArray.h \
+  /Users/dfeles/Downloads/cocos2d-x-3.14/NEW_PROJECTS_DIR/MyGame/cocos2d/external/bullet/BulletMultiThreaded/btGpu3DGridBroadphaseSharedDefs.h \
+  /Users/dfeles/Downloads/cocos2d-x-3.14/NEW_PROJECTS_DIR/MyGame/cocos2d/external/bullet/BulletMultiThreaded/btGpu3DGridBroadphaseSharedTypes.h \
+  /Users/dfeles/Downloads/cocos2d-x-3.14/NEW_PROJECTS_DIR/MyGame/cocos2d/external/bullet/BulletMultiThreaded/btGpu3DGridBroadphase.h \
+  /Users/dfeles/Downloads/cocos2d-x-3.14/NEW_PROJECTS_DIR/MyGame/cocos2d/build/../external/bullet/BulletCollision//BroadphaseCollision/btSimpleBroadphase.h \
+  /Users/dfeles/Downloads/cocos2d-x-3.14/NEW_PROJECTS_DIR/MyGame/cocos2d/external/bullet/BulletMultiThreaded/btGpu3DGridBroadphaseSharedCode.h
