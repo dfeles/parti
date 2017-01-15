@@ -13,8 +13,6 @@ USING_NS_CC;
 
 #define MAX_SPEED 5
 #define MAX_FORCE 0.03
-#define BIRDNUMB 1000
-
 
 #define SEPARATION 5.0
 #define ALIGNMENT 1.0
