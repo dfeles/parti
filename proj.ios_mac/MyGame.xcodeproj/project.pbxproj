@@ -63,6 +63,8 @@
 		527C21631E2BA9BE005A1D9B /* bird.png in Resources */ = {isa = PBXBuildFile; fileRef = 527C215E1E2BA888005A1D9B /* bird.png */; };
 		527C21661E2BABC3005A1D9B /* Bird.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 527C21641E2BABC3005A1D9B /* Bird.cpp */; };
 		527C21671E2BABC3005A1D9B /* Bird.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 527C21641E2BABC3005A1D9B /* Bird.cpp */; };
+		52B03DD91E2C4B84005477F8 /* FastNoise.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 52B03DD71E2C4B84005477F8 /* FastNoise.cpp */; };
+		52B03DDA1E2C4B84005477F8 /* FastNoise.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 52B03DD71E2C4B84005477F8 /* FastNoise.cpp */; };
 		52B47A471A53D09C004E4C60 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B47A461A53D09B004E4C60 /* Security.framework */; };
 		8262943E1AAF051F00CB7CF7 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8262943D1AAF051F00CB7CF7 /* Security.framework */; };
 		BF171245129291EC00B8313A /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB012928DE900B8313A /* OpenGLES.framework */; };
@@ -168,6 +170,9 @@
 		527C215E1E2BA888005A1D9B /* bird.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bird.png; sourceTree = "<group>"; };
 		527C21641E2BABC3005A1D9B /* Bird.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Bird.cpp; sourceTree = "<group>"; };
 		527C21651E2BABC3005A1D9B /* Bird.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Bird.hpp; sourceTree = "<group>"; };
+		52B03DD41E2C4695005477F8 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		52B03DD71E2C4B84005477F8 /* FastNoise.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FastNoise.cpp; sourceTree = "<group>"; };
+		52B03DD81E2C4B84005477F8 /* FastNoise.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FastNoise.h; sourceTree = "<group>"; };
 		52B47A461A53D09B004E4C60 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.1.sdk/System/Library/Frameworks/Security.framework; sourceTree = DEVELOPER_DIR; };
 		8262943D1AAF051F00CB7CF7 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		BF170DB012928DE900B8313A /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -276,6 +281,7 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				52B03DD41E2C4695005477F8 /* CoreData.framework */,
 				294D0D631D0D56D500F7F5D4 /* CoreText.framework */,
 				ED545A7D1B68A1FA00C3958E /* libiconv.dylib */,
 				ED545A7B1B68A1F400C3958E /* libiconv.dylib */,
@@ -319,6 +325,8 @@
 			children = (
 				46880B8419C43A87006E1F66 /* AppDelegate.cpp */,
 				46880B8519C43A87006E1F66 /* AppDelegate.h */,
+				52B03DD71E2C4B84005477F8 /* FastNoise.cpp */,
+				52B03DD81E2C4B84005477F8 /* FastNoise.h */,
 				46880B8619C43A87006E1F66 /* HelloWorldScene.cpp */,
 				46880B8719C43A87006E1F66 /* HelloWorldScene.h */,
 				527C21641E2BABC3005A1D9B /* Bird.cpp */,
@@ -525,6 +533,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52B03DD91E2C4B84005477F8 /* FastNoise.cpp in Sources */,
 				527C21661E2BABC3005A1D9B /* Bird.cpp in Sources */,
 				46880B8819C43A87006E1F66 /* AppDelegate.cpp in Sources */,
 				46880B8A19C43A87006E1F66 /* HelloWorldScene.cpp in Sources */,
@@ -541,6 +550,7 @@
 				46880B8919C43A87006E1F66 /* AppDelegate.cpp in Sources */,
 				503AE10517EB98FF00D1A890 /* main.cpp in Sources */,
 				527C21671E2BABC3005A1D9B /* Bird.cpp in Sources */,
+				52B03DDA1E2C4B84005477F8 /* FastNoise.cpp in Sources */,
 				46880B8B19C43A87006E1F66 /* HelloWorldScene.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

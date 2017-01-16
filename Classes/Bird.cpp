@@ -11,15 +11,15 @@
 USING_NS_CC;
 
 
-#define MAX_SPEED 5
-#define MAX_FORCE 0.03
+#define MAX_SPEED 2
+#define MAX_FORCE 0.05
 
-#define SEPARATION 5.0
-#define ALIGNMENT 1.0
-#define COHERENT 3.0
+#define SEPARATION 12.2
+#define ALIGNMENT 1.01
+#define COHERENT 10.0
 
 #define DESIRED_SEPARATION 10.0f;
-#define NEIGHBOR_DISTANCE 20.0f;
+#define NEIGHBOR_DISTANCE 100.0f;
 
 // on "init" you need to initialize your instance
 Bird::Bird() {}
@@ -52,6 +52,8 @@ void Bird::initOptions() {
     maxspeed = MAX_SPEED;
     maxforce = MAX_FORCE;
     
+    fastNoise.SetNoiseType(FastNoise::SimplexFractal);
+    fastNoise.SetFrequency(0.005f);
 }
 
 void Bird::update(cocos2d::Vector<Bird*> birds) {
@@ -71,7 +73,13 @@ void Bird::updateValues() {
     velocity.add(acceleration);
     // Limit speed
     velocity = limit(velocity,maxspeed);
-    position.add(velocity);
+    auto now = std::chrono::high_resolution_clock::now();
+    auto timeMillis = std::chrono::duration_cast<std::chrono::milliseconds>(now.time_since_epoch()).count()/40;
+    
+    float fractal = fastNoise.GetNoise(position.x,position.y, timeMillis)*M_PI_2;
+    
+    position.add(velocity/2);
+    position.add(Vec2(cos(fractal)-1,sin(fractal))*2);
     // Reset accelertion to 0 each cycle
     acceleration = acceleration * 0;
 }
@@ -118,9 +126,7 @@ std::vector<cocos2d::Vec2> Bird::separate(cocos2d::Vector<Bird*> birds){
     int i = 0;
     for (Bird* bird : birds) {
         i++;
-        if((i + rand()*10)%10 != 0) {
-            continue;
-        }
+        
         //SEP
         float d = position.distance(bird->position);
         
@@ -140,10 +146,7 @@ std::vector<cocos2d::Vec2> Bird::separate(cocos2d::Vector<Bird*> birds){
         if ((d > 0) && (d < neighbordist)) {
             sumCoh.add(bird->position); // Add position
             countCoh++;
-        }
-        
-        //ALIGN
-        if ((d > 0) && (d < neighbordist)) {
+            
             sumAli.add(bird->velocity);
             countAlign++;
         }
@@ -155,9 +158,6 @@ std::vector<cocos2d::Vec2> Bird::separate(cocos2d::Vector<Bird*> birds){
     
     // As long as the vector is greater than 0
     if (steer.length() > 0) {
-        // First two lines of code below could be condensed with new PVector setMag() method
-        // Not using this method until Processing.js catches up
-        // steer.setMag(maxspeed);
         
         // Implement Reynolds: Steering = Desired - Velocity
         steer.normalize();
@@ -200,14 +200,6 @@ cocos2d::Vec2 Bird::limit(cocos2d::Vec2 vector, float max) {
         return vector*ratio;
     }
     return vector;
-}
-
-cocos2d::Vec2 Bird::align(cocos2d::Vector<Bird*> birds){
-    
-}
-
-cocos2d::Vec2 Bird::cohesion(cocos2d::Vector<Bird*> birds){
-    
 }
 
 cocos2d::Vec2 Bird::seek(cocos2d::Vec2 target) {
