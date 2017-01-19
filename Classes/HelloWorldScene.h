@@ -23,6 +23,7 @@ private:
     
     cocos2d::DrawNode* dot;
     cocos2d::Vector<Bird*> birds;
+    cocos2d::Vector<cocos2d::Sprite*> birdSprites;
     virtual void update(float delta);
 };
 

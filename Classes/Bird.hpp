@@ -12,14 +12,13 @@
 #include "cocos2d.h"
 #include "FastNoise.h"
 
-class Bird : public cocos2d::Object
+class Bird : public cocos2d::Sprite
 {
 public:
     Bird();
     ~Bird();
     static Bird* create();
     cocos2d::Sprite* createBird();
-    void initOptions();
     void update(cocos2d::Vector<Bird*> birds);
     void move();
     
@@ -32,6 +31,9 @@ private:
     float maxforce;    // Maximum steering force
     float maxspeed;    // Maximum speed
     cocos2d::Size visibleSize;
+    
+    void initOptions();
+    void createAnimation();
     
     void flock(cocos2d::Vector<Bird*> birds);
     void updateValues();

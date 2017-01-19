@@ -14,12 +14,12 @@ USING_NS_CC;
 #define MAX_SPEED 2
 #define MAX_FORCE 0.05
 
-#define SEPARATION 12.2
-#define ALIGNMENT 1.01
+#define SEPARATION 15.2
+#define ALIGNMENT 0.01
 #define COHERENT 10.0
 
-#define DESIRED_SEPARATION 10.0f;
-#define NEIGHBOR_DISTANCE 100.0f;
+#define DESIRED_SEPARATION 20.0f;
+#define NEIGHBOR_DISTANCE 70.0f;
 
 // on "init" you need to initialize your instance
 Bird::Bird() {}
@@ -28,12 +28,29 @@ Bird::~Bird() {}
 
 Bird* Bird::create() {
     Bird* mBird = new Bird();
+    mBird->initWithFile("birdAnim/birdAnim1.png");
     mBird->initOptions();
+    mBird->createAnimation();
     return mBird;
 }
 
+void Bird::createAnimation() {
+    Vector<SpriteFrame*> animFrames;
+    animFrames.reserve(5);
+    for(int i = 0; i < 5; i++)
+    {
+        auto frame = std::to_string(i+1);
+        animFrames.pushBack(SpriteFrame::create("birdAnim/birdAnim"+frame+".png", Rect(0,0,7,7)));
+    }
+    
+    auto delay = DelayTime::create(random(0.2f, 0.4f));
+    auto animation = Animation::createWithSpriteFrames(animFrames, 0.1f);
+    auto animate = Animate::create(animation);
+    auto seq1 = Sequence::create(animate, delay, nullptr);
+    runAction(RepeatForever::create(seq1));
+}
+
 void Bird::initOptions() {
-    //setAnchorPoint(Vec2(0.5, 0.5));
     visibleSize = Director::getInstance()->getVisibleSize();
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
     
@@ -91,7 +108,7 @@ void Bird::render() {
     if (position.x > visibleSize.width+r) position.x = -r;
     if (position.y > visibleSize.height+r) position.y = -r;
     
-    //setPosition(position.x, position.y);
+    setPosition(position.x, position.y);
 }
 
 void Bird::flock(cocos2d::Vector<Bird*> birds) {
