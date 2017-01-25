@@ -11,25 +11,26 @@
 USING_NS_CC;
 
 
-#define MAX_SPEED 2
-#define MAX_FORCE 0.05
+#define MAX_SPEED 2.0
+#define MAX_FORCE .1
 
-#define SEPARATION 15.2
-#define ALIGNMENT 0.01
+#define SEPARATION 10.2
+#define ALIGNMENT 0.1
 #define COHERENT 10.0
 
-#define DESIRED_SEPARATION 20.0f;
-#define NEIGHBOR_DISTANCE 70.0f;
+#define DESIRED_SEPARATION 5.0f;
+#define NEIGHBOR_DISTANCE 25.0f;
 
 // on "init" you need to initialize your instance
 Bird::Bird() {}
 
 Bird::~Bird() {}
 
-Bird* Bird::create() {
+Bird* Bird::create(int index) {
     Bird* mBird = new Bird();
+    
     mBird->initWithFile("birdAnim/birdAnim1.png");
-    mBird->initOptions();
+    mBird->initOptions(index);
     mBird->createAnimation();
     return mBird;
 }
@@ -37,10 +38,12 @@ Bird* Bird::create() {
 void Bird::createAnimation() {
     Vector<SpriteFrame*> animFrames;
     animFrames.reserve(5);
+    auto width = getContentSize().width;
     for(int i = 0; i < 5; i++)
     {
-        auto frame = std::to_string(i+1);
-        animFrames.pushBack(SpriteFrame::create("birdAnim/birdAnim"+frame+".png", Rect(0,0,7,7)));
+        std::stringstream name;
+        name << "birdAnim/birdAnim" << i+1 << ".png";
+        animFrames.pushBack(SpriteFrame::create(name.str(), Rect(0,0,width,width)));
     }
     
     auto delay = DelayTime::create(random(0.2f, 0.4f));
@@ -50,11 +53,13 @@ void Bird::createAnimation() {
     runAction(RepeatForever::create(seq1));
 }
 
-void Bird::initOptions() {
-    visibleSize = Director::getInstance()->getVisibleSize();
-    Vec2 origin = Director::getInstance()->getVisibleOrigin();
-    
-    position = Vec2(visibleSize.width/2 + origin.x, visibleSize.height/2 + origin.y);
+void Bird::makeSpecial() {
+    setScale(.5, .5);
+}
+
+void Bird::initOptions(int _index) {
+    index = _index;
+    setAnchorPoint(Vec2(0.5,0.5));
     
     acceleration = Vec2(0, 0);
     
@@ -71,17 +76,30 @@ void Bird::initOptions() {
     
     fastNoise.SetNoiseType(FastNoise::SimplexFractal);
     fastNoise.SetFrequency(0.005f);
+    
+    auto rndSeed = random(0.2f, 2.0f);
+    
+    desiredseparation = DESIRED_SEPARATION;
+    desiredseparation *= rndSeed * 5;
+    neighbordist = NEIGHBOR_DISTANCE;
+    neighbordist *= rndSeed;
+}
+
+void Bird::addedToParent() {
+    scaling = getParent()->getScale();
+    visibleSize = Director::getInstance()->getVisibleSize() / scaling;
+    origin = Director::getInstance()->getVisibleOrigin() / scaling;
+    position = Vec2(visibleSize.width/2 + origin.x, visibleSize.height/2 + origin.y);
+    setPosition(position);
 }
 
 void Bird::update(cocos2d::Vector<Bird*> birds) {
     flock(birds);
     updateValues();
-    render();
 }
 
 void Bird::move() {
     updateValues();
-    render();
 }
 
 
@@ -93,22 +111,42 @@ void Bird::updateValues() {
     auto now = std::chrono::high_resolution_clock::now();
     auto timeMillis = std::chrono::duration_cast<std::chrono::milliseconds>(now.time_since_epoch()).count()/40;
     
-    float fractal = fastNoise.GetNoise(position.x,position.y, timeMillis)*M_PI_2;
+    fractal = (fastNoise.GetNoise(position.x/2 + random(-1.0f, 1.0f),position.y/2 + random(-1.0f, 1.0f), timeMillis) - .5) * 10;
     
-    position.add(velocity/2);
-    position.add(Vec2(cos(fractal)-1,sin(fractal))*2);
-    // Reset accelertion to 0 each cycle
+    velocity += Vec2::forAngle(fractal) * random(0.0f, 0.5f);
+    
+    fractal = fastNoise.GetNoise(position.x/2,position.y/2, timeMillis)/1.0;
+    
+    //add(Vec2(cos(fractal)-1,sin(fractal))*0.5);
+    
+    
+    position.add(velocity);
+    auto scale = std::abs((fastNoise.GetNoise(position.x,position.y, timeMillis)))+.3;
+    //auto angle = 90-velocity.getAngle() * (180/M_PI);
+    
+    border();
+    
+    setScale(scale);
     acceleration = acceleration * 0;
+    
+    auto oldPosition = getPosition();
+    setPosition(modulate(getPositionX(), position.x, 100.0f), modulate(getPositionY(), position.y, 100.0f));
+    auto angle = (getPosition()-oldPosition).getAngle();
+    auto an = 90 - angle * 180/M_PI;
+    setRotation(an);
 }
 
-void Bird::render() {
-    
-    if (position.x < -r) position.x = visibleSize.width+r;
-    if (position.y < -r) position.y = visibleSize.height+r;
-    if (position.x > visibleSize.width+r) position.x = -r;
-    if (position.y > visibleSize.height+r) position.y = -r;
-    
-    setPosition(position.x, position.y);
+float Bird::modulate(float x, float to, float speed) {
+    return (x*speed + to)/(speed+1);
+}
+
+void Bird::border() {
+    auto changed = false;
+    if (position.x < -r) { position.x = visibleSize.width+r; changed = true; }
+    if (position.y < -r) { position.y = visibleSize.height+r; changed = true; }
+    if (position.x > visibleSize.width+r) { position.x = -r; changed = true; }
+    if (position.y > visibleSize.height+r) { position.y = -r; changed = true; }
+    if (changed) setPosition(position);
 }
 
 void Bird::flock(cocos2d::Vector<Bird*> birds) {
@@ -117,9 +155,9 @@ void Bird::flock(cocos2d::Vector<Bird*> birds) {
     cocos2d::Vec2 ali = touple.at(1);      // Alignment
     cocos2d::Vec2 coh = touple.at(2);   // Cohesion
     // Arbitrarily weight these forces
-    sep = sep*SEPARATION;
+    sep = sep*(SEPARATION);
     ali = ali*ALIGNMENT;
-    coh = coh*COHERENT;
+    coh = coh*(COHERENT);
     // Add the force vectors to acceleration
     applyForce(sep);
     applyForce(ali);
@@ -127,8 +165,7 @@ void Bird::flock(cocos2d::Vector<Bird*> birds) {
 }
 
 std::vector<cocos2d::Vec2> Bird::separate(cocos2d::Vector<Bird*> birds){
-    float desiredseparation = DESIRED_SEPARATION;
-    float neighbordist = NEIGHBOR_DISTANCE;
+    //neighbordist *= fractal * 10;
     cocos2d::Vec2 steer = Vec2(0, 0);
     int countSep = 0;
     

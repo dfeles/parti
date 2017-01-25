@@ -22,9 +22,16 @@ private:
     cocos2d::Director* director;
     
     cocos2d::DrawNode* dot;
+    
+    cocos2d::Node* birdsField;
     cocos2d::Vector<Bird*> birds;
     cocos2d::Vector<cocos2d::Sprite*> birdSprites;
     virtual void update(float delta);
+    void createParallaxBg();
+    
+    cocos2d::ParallaxNode* parallax;
+    cocos2d::Sprite* background;
+    
 };
 
 #endif // __HELLOWORLD_SCENE_H__
