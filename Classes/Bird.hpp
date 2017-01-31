@@ -25,6 +25,7 @@ public:
     void addedToParent();
     
     cocos2d::Vec2 position;
+    cocos2d::Vec2 centerPosition;
     cocos2d::Vec2 velocity;
     cocos2d::Vec2 acceleration;
     FastNoise fastNoise;
@@ -33,6 +34,8 @@ private:
     float maxforce;    // Maximum steering force
     float maxspeed;    // Maximum speed
     float fractal = 0;
+    
+    float rndSeed;
     cocos2d::Size visibleSize;
     cocos2d::Vec2 origin;
     
