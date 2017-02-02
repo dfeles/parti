@@ -59,6 +59,14 @@
 		521A8E6519F0C34300D177D7 /* Default-736h@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 521A8E6319F0C34300D177D7 /* Default-736h@3x.png */; };
 		521A8EA919F11F5000D177D7 /* fonts in Resources */ = {isa = PBXBuildFile; fileRef = 521A8EA819F11F5000D177D7 /* fonts */; };
 		521A8EAA19F11F5000D177D7 /* fonts in Resources */ = {isa = PBXBuildFile; fileRef = 521A8EA819F11F5000D177D7 /* fonts */; };
+		5241A34A1E422BAE0091F581 /* SimpleBird.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5241A3481E422BAE0091F581 /* SimpleBird.cpp */; };
+		5241A34B1E422EA50091F581 /* SimpleBird.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5241A3481E422BAE0091F581 /* SimpleBird.cpp */; };
+		5241A3531E42A8F80091F581 /* fog.png in Resources */ = {isa = PBXBuildFile; fileRef = 5241A3521E42A8F80091F581 /* fog.png */; };
+		5241A3541E42A8F80091F581 /* fog.png in Resources */ = {isa = PBXBuildFile; fileRef = 5241A3521E42A8F80091F581 /* fog.png */; };
+		5241A3571E42A96E0091F581 /* Footer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5241A3551E42A96E0091F581 /* Footer.cpp */; };
+		5241A3581E42A96E0091F581 /* Footer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5241A3551E42A96E0091F581 /* Footer.cpp */; };
+		5241A35D1E42B8B50091F581 /* footer in Resources */ = {isa = PBXBuildFile; fileRef = 5241A35C1E42B8B50091F581 /* footer */; };
+		5241A35E1E42B8B50091F581 /* footer in Resources */ = {isa = PBXBuildFile; fileRef = 5241A35C1E42B8B50091F581 /* footer */; };
 		527C215F1E2BA888005A1D9B /* bird.png in Resources */ = {isa = PBXBuildFile; fileRef = 527C215E1E2BA888005A1D9B /* bird.png */; };
 		527C21631E2BA9BE005A1D9B /* bird.png in Resources */ = {isa = PBXBuildFile; fileRef = 527C215E1E2BA888005A1D9B /* bird.png */; };
 		527C21661E2BABC3005A1D9B /* Bird.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 527C21641E2BABC3005A1D9B /* Bird.cpp */; };
@@ -173,6 +181,12 @@
 		521A8E6219F0C34300D177D7 /* Default-667h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-667h@2x.png"; sourceTree = "<group>"; };
 		521A8E6319F0C34300D177D7 /* Default-736h@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-736h@3x.png"; sourceTree = "<group>"; };
 		521A8EA819F11F5000D177D7 /* fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = fonts; sourceTree = "<group>"; };
+		5241A3481E422BAE0091F581 /* SimpleBird.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SimpleBird.cpp; sourceTree = "<group>"; };
+		5241A3491E422BAE0091F581 /* SimpleBird.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SimpleBird.hpp; sourceTree = "<group>"; };
+		5241A3521E42A8F80091F581 /* fog.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fog.png; sourceTree = "<group>"; };
+		5241A3551E42A96E0091F581 /* Footer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Footer.cpp; sourceTree = "<group>"; };
+		5241A3561E42A96E0091F581 /* Footer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Footer.hpp; sourceTree = "<group>"; };
+		5241A35C1E42B8B50091F581 /* footer */ = {isa = PBXFileReference; lastKnownFileType = folder; path = footer; sourceTree = "<group>"; };
 		527C215E1E2BA888005A1D9B /* bird.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bird.png; sourceTree = "<group>"; };
 		527C21641E2BABC3005A1D9B /* Bird.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Bird.cpp; sourceTree = "<group>"; };
 		527C21651E2BABC3005A1D9B /* Bird.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Bird.hpp; sourceTree = "<group>"; };
@@ -319,11 +333,13 @@
 			isa = PBXGroup;
 			children = (
 				52C485A51E312CE4006DA64C /* blue.png */,
+				5241A35C1E42B8B50091F581 /* footer */,
 				52C4859E1E30D67C006DA64C /* birdAnim */,
 				521A8EA819F11F5000D177D7 /* fonts */,
 				3EACC98E19EE6D4300EB3C5E /* res */,
 				46880B7619C43A67006E1F66 /* CloseNormal.png */,
 				46880B7719C43A67006E1F66 /* CloseSelected.png */,
+				5241A3521E42A8F80091F581 /* fog.png */,
 				527C215E1E2BA888005A1D9B /* bird.png */,
 				46880B7A19C43A67006E1F66 /* HelloWorld.png */,
 				52C485A21E30E004006DA64C /* background.png */,
@@ -343,6 +359,10 @@
 				46880B8719C43A87006E1F66 /* HelloWorldScene.h */,
 				527C21641E2BABC3005A1D9B /* Bird.cpp */,
 				527C21651E2BABC3005A1D9B /* Bird.hpp */,
+				5241A3551E42A96E0091F581 /* Footer.cpp */,
+				5241A3561E42A96E0091F581 /* Footer.hpp */,
+				5241A3481E422BAE0091F581 /* SimpleBird.cpp */,
+				5241A3491E422BAE0091F581 /* SimpleBird.hpp */,
 			);
 			name = Classes;
 			path = ../Classes;
@@ -509,11 +529,13 @@
 			files = (
 				5087E78117EB970100C73F5D /* Icon-120.png in Resources */,
 				5087E78617EB970100C73F5D /* Icon-76.png in Resources */,
+				5241A35D1E42B8B50091F581 /* footer in Resources */,
 				52C485A61E312CE4006DA64C /* blue.png in Resources */,
 				5087E77F17EB970100C73F5D /* Default@2x.png in Resources */,
 				50EF629917ECD46A001EB2F8 /* Icon-100.png in Resources */,
 				5087E78317EB970100C73F5D /* Icon-152.png in Resources */,
 				46880B8119C43A67006E1F66 /* HelloWorld.png in Resources */,
+				5241A3531E42A8F80091F581 /* fog.png in Resources */,
 				46880B7D19C43A67006E1F66 /* CloseSelected.png in Resources */,
 				5087E77D17EB970100C73F5D /* Default-568h@2x.png in Resources */,
 				5087E78517EB970100C73F5D /* Icon-72.png in Resources */,
@@ -546,9 +568,11 @@
 				503AE0F817EB97AB00D1A890 /* Icon.icns in Resources */,
 				3EACC99019EE6D4300EB3C5E /* res in Resources */,
 				52C485A01E30D67C006DA64C /* birdAnim in Resources */,
+				5241A3541E42A8F80091F581 /* fog.png in Resources */,
 				521A8EAA19F11F5000D177D7 /* fonts in Resources */,
 				46880B7C19C43A67006E1F66 /* CloseNormal.png in Resources */,
 				527C21631E2BA9BE005A1D9B /* bird.png in Resources */,
+				5241A35E1E42B8B50091F581 /* footer in Resources */,
 				52C485A41E30E005006DA64C /* background.png in Resources */,
 				46880B7E19C43A67006E1F66 /* CloseSelected.png in Resources */,
 			);
@@ -563,6 +587,8 @@
 			files = (
 				52B03DD91E2C4B84005477F8 /* FastNoise.cpp in Sources */,
 				527C21661E2BABC3005A1D9B /* Bird.cpp in Sources */,
+				5241A3571E42A96E0091F581 /* Footer.cpp in Sources */,
+				5241A34A1E422BAE0091F581 /* SimpleBird.cpp in Sources */,
 				46880B8819C43A87006E1F66 /* AppDelegate.cpp in Sources */,
 				46880B8A19C43A87006E1F66 /* HelloWorldScene.cpp in Sources */,
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
@@ -575,8 +601,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5241A34B1E422EA50091F581 /* SimpleBird.cpp in Sources */,
 				46880B8919C43A87006E1F66 /* AppDelegate.cpp in Sources */,
 				503AE10517EB98FF00D1A890 /* main.cpp in Sources */,
+				5241A3581E42A96E0091F581 /* Footer.cpp in Sources */,
 				527C21671E2BABC3005A1D9B /* Bird.cpp in Sources */,
 				52B03DDA1E2C4B84005477F8 /* FastNoise.cpp in Sources */,
 				46880B8B19C43A87006E1F66 /* HelloWorldScene.cpp in Sources */,

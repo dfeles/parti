@@ -3,7 +3,7 @@
 
 USING_NS_CC;
 
-#define BIRDNUMB 500
+#define BIRDNUMB 1000
 
 
 Scene* HelloWorld::createScene()
@@ -22,6 +22,13 @@ Scene* HelloWorld::createScene()
 }
 
 // on "init" you need to initialize your instance
+void HelloWorld::createBird(int x, int y) {
+    auto bird = SimpleBird::create((int) birds.size(), x, y);
+    birdsField->addChild(bird);
+    bird->addedToParent();
+    birds.pushBack(bird);
+}
+
 bool HelloWorld::init()
 {
     if ( !Layer::init() )
@@ -39,7 +46,7 @@ bool HelloWorld::init()
     birdsField = Node::create();
     this->addChild(birdsField);
     birdsField->setAnchorPoint(Vec2(.5,.5));
-    birdsField->setScale(2.0);
+    birdsField->setScale(5.0);
     
     auto label = Label::createWithSystemFont("hello", "Helvetica", 12);
     // position the label on the center of the screen
@@ -48,21 +55,90 @@ bool HelloWorld::init()
     this->addChild(label, 1);
     
     
-    for(int i=0; i<BIRDNUMB ;i++){
-        auto bird = Bird::create(i);
-        if(i == 0) {
-            bird->makeSpecial();
-        }
-        //auto birdSprite = Sprite::create("bird.png");
-        birdsField->addChild(bird);
-        bird->addedToParent();
-        //birdSprites.insert(i, birdSprite);
-        birds.pushBack(bird);
+    for(int i=0; i<BIRDNUMB; i++){
+        createBird();        
 
     }
     
     dot = cocos2d::DrawNode::create();
     addChild(dot);
+    
+    auto listener = EventListenerMouse::create();
+    listener->onMouseDown = [this](cocos2d::Event* event){
+        // Cast Event to EventMouse for position details like above
+        try {
+            EventMouse* mouseEvent = dynamic_cast<EventMouse*>(event);
+            createBird(mouseEvent->getCursorX(), mouseEvent->getCursorY());
+        }
+        catch(std::bad_cast& e){
+            return;
+        }
+    };
+    
+    listener->onMouseMove = [this](cocos2d::Event* event){
+        // Cast Event to EventMouse for position details like above
+        try {
+            EventMouse* mouseEvent = dynamic_cast<EventMouse*>(event);
+            mousePosition = Point(mouseEvent->getCursorX(),mouseEvent->getCursorY());
+            
+            
+        }
+        catch (std::bad_cast& e){
+            // Not sure what kind of event you passed us cocos, but it was the wrong one
+            return;
+        }
+    };
+    
+    auto keyB = EventListenerKeyboard::create();
+    keyB->onKeyReleased = [this](EventKeyboard::KeyCode keyCode, Event* event){
+        
+        switch(keyCode){
+            case EventKeyboard::KeyCode::KEY_LEFT_ARROW:
+            case EventKeyboard::KeyCode::KEY_A:
+                direction -= Vec2(1,0);
+                break;
+            case EventKeyboard::KeyCode::KEY_RIGHT_ARROW:
+            case EventKeyboard::KeyCode::KEY_D:
+                direction -= Vec2(-1,0);
+                break;
+            case EventKeyboard::KeyCode::KEY_UP_ARROW:
+            case EventKeyboard::KeyCode::KEY_W:
+                direction -= Vec2(0,-1);
+                break;
+            case EventKeyboard::KeyCode::KEY_DOWN_ARROW:
+            case EventKeyboard::KeyCode::KEY_S:
+                direction -= Vec2(0,1);
+                break;
+            default:
+                break;
+        }
+    };
+    keyB->onKeyPressed = [this](EventKeyboard::KeyCode keyCode, Event* event){
+        switch(keyCode){
+            case EventKeyboard::KeyCode::KEY_LEFT_ARROW:
+            case EventKeyboard::KeyCode::KEY_A:
+                direction += Vec2(1,0);
+                break;
+            case EventKeyboard::KeyCode::KEY_RIGHT_ARROW:
+            case EventKeyboard::KeyCode::KEY_D:
+                direction += Vec2(-1,0);
+                break;
+            case EventKeyboard::KeyCode::KEY_UP_ARROW:
+            case EventKeyboard::KeyCode::KEY_W:
+                direction += Vec2(0,-1);
+                break;
+            case EventKeyboard::KeyCode::KEY_DOWN_ARROW:
+            case EventKeyboard::KeyCode::KEY_S:
+                direction += Vec2(0,1);
+                break;
+            default:
+                break;
+        }
+    };
+
+    
+    _eventDispatcher->addEventListenerWithFixedPriority(listener, 1);
+    _eventDispatcher->addEventListenerWithFixedPriority(keyB, 2);
     
     return true;
 }
@@ -75,7 +151,7 @@ void HelloWorld::createParallaxBg() {
     texture->setTexParameters(texParams);
     
     background = Sprite::createWithTexture(texture, (Rect){ 0, 0, visibleSize.width*2, visibleSize.height*2});
-    this->addChild(background);
+    
     
     
     auto blue = Sprite::create("blue.png");
@@ -84,32 +160,39 @@ void HelloWorld::createParallaxBg() {
     blue->setAnchorPoint(Vec2(0,0));
     blue->setScale(scaleX, scaleY);
     
-    auto someBlend = BlendFunc();
-    someBlend.src = GL_ONE;
-    someBlend.dst = GL_ONE_MINUS_SRC_ALPHA;
-    //blue->setBlendFunc(someBlend);
-    //blue->setOpacityModifyRGB(true);
-    blue->setOpacity(100);
-    
     this->addChild(blue);
-    /*
-    auto middle_layer = Sprite::create("background.png");
-    parallax->addChild(middle_layer, 1, Vec2(2.2f,1.0f), Vec2(0,-200) );
+    this->addChild(background);
     
-    auto top_layer = Sprite::create("background.png");
-    parallax->addChild(top_layer, 2, Vec2(3.0f,2.5f), Vec2(200,800) );
+    footer = Footer::create();
+    footer->setAnchorPoint(Vec2(0,0));
+    this->addChild(footer);
     
-    this->addChild(parallax);
-     */
+    auto fog = Sprite::create("fog.png");
+    fog->setAnchorPoint(Vec2(0,0));
+    //this->addChild(fog);
 }
 
 int i = 0;
 void HelloWorld::update( float dt ) {
-    float x = i/1.0f;
-    float y = sin(i/20.0f)*10.0f;
-    background->setTextureRect((Rect){ x, y, visibleSize.width*2, visibleSize.height*2});
     
-    if(i%50 == 0) {
+    auto ratio = 2000 / birds.size();
+    //birdsField->setScale(SimpleBird::modulate(birdsField->getScale(), scale, 100));
+    
+    directionModulated = SimpleBird::modulateVec(directionModulated, direction*5, 200.0);
+    
+    
+    //Point scrollDecrement = Point(-(visibleSize.width/2 - mousePosition.x)/visibleSize.width*100,  -mousePosition.y/visibleSize.height*10);
+    
+    auto posi = footer->getPosition() + directionModulated;
+    posi = Vec2(posi.x, fmin(posi.y, 0));
+    
+    footer->setPosition(posi);
+    footer->updatePosition();
+    
+    
+    background->setTextureRect((Rect){ footer->getPosition().x, footer->getPosition().y, visibleSize.width*2, visibleSize.height*2});
+    
+    if(i%100 == 0) {
         //dot->drawSolidRect(Vec2(0,0), Vec2(visibleSize.width, visibleSize.height), Color4F(1.0f,0.0f,0.0f,0.01f));
     
     }
@@ -118,15 +201,12 @@ void HelloWorld::update( float dt ) {
     int n = 0;
     
     
-    cocos2d::Vec2* points = new cocos2d::Vec2[BIRDNUMB];
+    //cocos2d::Vec2* points = new cocos2d::Vec2[BIRDNUMB];
+    
     for(auto bird:birds) {
         n++;
-        if(n == 1) continue;
-        if((n+i)%10 == 0) {
-            bird->update(birds);
-        } else {
-            bird->move();
-        }
-        points[n] = bird->position;
+        //if(n == 1) continue;
+        
+        bird->update(mousePosition, direction);
     }
 }

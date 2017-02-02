@@ -2,7 +2,8 @@
 #define __HELLOWORLD_SCENE_H__
 
 #include "cocos2d.h"
-#include "Bird.hpp"
+#include "SimpleBird.hpp"
+#include "Footer.hpp"
 
 
 class HelloWorld : public cocos2d::Layer
@@ -15,6 +16,12 @@ public:
     // a selector callback
     void menuCloseCallback(cocos2d::Ref* pSender);
     cocos2d::Size visibleSize;
+    cocos2d::Point mousePosition;
+    void createBird(int x = -1, int y = -1);
+    cocos2d::Vec2 direction = cocos2d::Vec2(0,0);
+    cocos2d::Vec2 directionModulated = cocos2d::Vec2(0,0);
+    
+    Footer* footer;
     
     // implement the "static create()" method manually
     CREATE_FUNC(HelloWorld);
@@ -24,7 +31,7 @@ private:
     cocos2d::DrawNode* dot;
     
     cocos2d::Node* birdsField;
-    cocos2d::Vector<Bird*> birds;
+    cocos2d::Vector<SimpleBird*> birds;
     cocos2d::Vector<cocos2d::Sprite*> birdSprites;
     virtual void update(float delta);
     void createParallaxBg();

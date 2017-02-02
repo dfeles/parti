@@ -68,7 +68,7 @@ void Bird::initOptions(int _index) {
     
     // Leaving the code temporarily this way so that this example runs in JS
     float angle = std::rand();
-    velocity = Vec2(cos(angle), sin(angle));
+    velocity = Vec2::forAngle(angle);
     
     r = 5.0;
     maxspeed = MAX_SPEED;
@@ -108,13 +108,14 @@ void Bird::updateValues() {
     // Update velocity
     velocity.add(acceleration);
     // Limit speed
-    velocity = limit(velocity,maxspeed*rndSeed);
+    velocity = limit(velocity,maxspeed);
     auto now = std::chrono::high_resolution_clock::now();
     auto timeMillis = std::chrono::duration_cast<std::chrono::milliseconds>(now.time_since_epoch()).count()/40;
     
-    fractal = (fastNoise.GetNoise(position.x/2 ,position.y/2, timeMillis) - .5) * 10;
-    
-    velocity += Vec2::forAngle(fractal) / (rndSeed+1);
+    fractal = (pow(fastNoise.GetNoise(position.x/10 ,position.y/10, timeMillis),2.0f)-.5) * 10;
+    auto fractalVector = Vec2::forAngle(fractal);
+    fractalVector.normalize();
+    velocity += fractalVector;
     
     fractal = fastNoise.GetNoise(position.x/2,position.y/2, timeMillis);
     
@@ -184,6 +185,7 @@ std::vector<cocos2d::Vec2> Bird::separate(cocos2d::Vector<Bird*> birds){
     // For every boid in the system, check if it's too close
     int i = 0;
     for (Bird* bird : birds) {
+    //auto bird = birds.getRandomObject();
         i++;
         
         //SEP
