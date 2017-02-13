@@ -3,7 +3,7 @@
 
 USING_NS_CC;
 
-#define BIRDNUMB 1000
+#define BIRDNUMB 1500
 
 
 Scene* HelloWorld::createScene()
@@ -145,14 +145,24 @@ bool HelloWorld::init()
 
 void HelloWorld::createParallaxBg() {
     
-    
+    /*
     Texture2D *texture = Director::getInstance()->getTextureCache()->addImage("background.png");
     Texture2D::TexParams texParams = {GL_LINEAR,GL_LINEAR,GL_REPEAT,GL_REPEAT};
     texture->setTexParameters(texParams);
     
     background = Sprite::createWithTexture(texture, (Rect){ 0, 0, visibleSize.width*2, visibleSize.height*2});
+     this->addChild(background);
+    */
     
     
+    auto startColor = Color4B(255,220,200,255);
+    auto endColor = Color4B(254,126,77,255);
+    
+    backgroundLayer = LayerGradient::create(startColor, endColor, Vec2(1,1));
+    
+    backgroundLayer->setContentSize(visibleSize);
+    backgroundLayer->setPosition(0,0);
+    this->addChild(backgroundLayer);
     
     auto blue = Sprite::create("blue.png");
     auto scaleX = visibleSize.width*2 / blue->getContentSize().width/2;
@@ -160,8 +170,7 @@ void HelloWorld::createParallaxBg() {
     blue->setAnchorPoint(Vec2(0,0));
     blue->setScale(scaleX, scaleY);
     
-    this->addChild(blue);
-    this->addChild(background);
+    
     
     footer = Footer::create();
     footer->setAnchorPoint(Vec2(0,0));
@@ -178,8 +187,19 @@ void HelloWorld::update( float dt ) {
     auto ratio = 2000 / birds.size();
     //birdsField->setScale(SimpleBird::modulate(birdsField->getScale(), scale, 100));
     
-    directionModulated = SimpleBird::modulateVec(directionModulated, direction*5, 200.0);
+    auto m = (sin(i/100.0f) + 1)/2.0f*255.0f;
+    auto startColor = Color4B(255,220,255-m,255);
+    auto endColor = Color4B(254,126,m,255);
+    auto modStartColor = Magic::modulateColor(Color4B(backgroundLayer->getStartColor()), startColor, 10.0f);
+    auto modEndColor = Magic::modulateColor(Color4B(backgroundLayer->getEndColor()), endColor, 10.0f);
+    backgroundLayer->setStartColor(Color3B(modStartColor));
+    backgroundLayer->setStartOpacity(modStartColor.a);
+    backgroundLayer->setEndColor(Color3B(modEndColor));
+    backgroundLayer->setEndOpacity(modEndColor.a);
     
+    directionModulated = Magic::modulateVec(directionModulated, direction*5, 200.0);
+    
+    //backgroundLayer->setVector(Vec2::forAngle(i/100.0f));
     
     //Point scrollDecrement = Point(-(visibleSize.width/2 - mousePosition.x)/visibleSize.width*100,  -mousePosition.y/visibleSize.height*10);
     
@@ -190,7 +210,7 @@ void HelloWorld::update( float dt ) {
     footer->updatePosition();
     
     
-    background->setTextureRect((Rect){ footer->getPosition().x, footer->getPosition().y, visibleSize.width*2, visibleSize.height*2});
+    //background->setTextureRect((Rect){ footer->getPosition().x, footer->getPosition().y, visibleSize.width*2, visibleSize.height*2});
     
     if(i%100 == 0) {
         //dot->drawSolidRect(Vec2(0,0), Vec2(visibleSize.width, visibleSize.height), Color4F(1.0f,0.0f,0.0f,0.01f));

@@ -357,8 +357,8 @@ obj/local/armeabi/objs-debug/MyGame_shared/__/__/Classes/AppDelegate.o: \
  /Users/dfeles/Documents/life/parti/cocos2d/cocos/3d/../platform/android/CCApplication-android.h \
  /Users/dfeles/Documents/life/parti/cocos2d/cocos/3d/../renderer/CCGLProgramCache.h \
  /Users/dfeles/Documents/life/parti/cocos2d/cocos/3d/../renderer/ccGLStateCache.h \
- jni/../../Classes/HelloWorldScene.h jni/../../Classes/Bird.hpp \
- jni/../../Classes/FastNoise.h
+ jni/../../Classes/HelloWorldScene.h jni/../../Classes/SimpleBird.hpp \
+ jni/../../Classes/FastNoise.h jni/../../Classes/Footer.hpp
 
 jni/../../Classes/AppDelegate.h:
 
@@ -1078,6 +1078,8 @@ jni/../../Classes/AppDelegate.h:
 
 jni/../../Classes/HelloWorldScene.h:
 
-jni/../../Classes/Bird.hpp:
+jni/../../Classes/SimpleBird.hpp:
 
 jni/../../Classes/FastNoise.h:
+
+jni/../../Classes/Footer.hpp:

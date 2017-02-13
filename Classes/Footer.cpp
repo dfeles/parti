@@ -44,21 +44,27 @@ Footer* Footer::create() {
 
 void Footer::initFooter() {
     
-    addImg("footer/mountain.png", 0.1);
-    addImg("footer/mountain2.png", 0.12);
+    addImg("footer/mountain.png", 0.1, 0, 0, 2.0);
+    addImg("footer/mountain2.png", 0.12, 0, 0, 2.0);
     addImg("footer/house.png", 0.5, 10, 50);
     addImg("footer/tree.png", 0.5, 100, 50);
+    addImg("footer/pine.png", 0.5, 900, 50);
+    addImg("footer/pine.png", 0.56, 950, 50);
+    addImg("footer/pine.png", 0.6, 1000, 50);
     addImg("footer/wire.png", 0.6, 600, 50);
+    addImg("footer/treeees.png", 0.5, 0, 50, 2.0);
+    
     
     auto rock = Sprite::create("footer/footer.png");
     rock->setAnchorPoint(Point::ZERO);
     addChild(rock, 0, Point(0.0, 0.4), Point(0,0));
 }
 
-void Footer::addImg(std::string str, float deepness, int x, int y) {
+void Footer::addImg(std::string str, float deepness, int x, int y, float scale) {
     // Create a sprite with rock texture
     auto rock = Sprite::create(str);
     rock->setAnchorPoint(Point::ZERO);
+    rock->setScale(scale, scale);
     addChild(rock, 0, Point(deepness, deepness), Point(x,y));
 }
 

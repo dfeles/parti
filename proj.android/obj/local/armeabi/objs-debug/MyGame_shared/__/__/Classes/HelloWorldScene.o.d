@@ -358,7 +358,8 @@ obj/local/armeabi/objs-debug/MyGame_shared/__/__/Classes/HelloWorldScene.o: \
  /Users/dfeles/Documents/life/parti/cocos2d/cocos/3d/../platform/android/CCApplication-android.h \
  /Users/dfeles/Documents/life/parti/cocos2d/cocos/3d/../renderer/CCGLProgramCache.h \
  /Users/dfeles/Documents/life/parti/cocos2d/cocos/3d/../renderer/ccGLStateCache.h \
- jni/../../Classes/Bird.hpp jni/../../Classes/FastNoise.h \
+ jni/../../Classes/SimpleBird.hpp jni/../../Classes/FastNoise.h \
+ jni/../../Classes/Footer.hpp \
  /Users/dfeles/Documents/life/parti/cocos2d/cocos/audio/android/../include/SimpleAudioEngine.h \
  /Users/dfeles/Documents/life/parti/cocos2d/cocos/3d/../audio/include/Export.h
 
@@ -1078,9 +1079,11 @@ jni/../../Classes/HelloWorldScene.h:
 
 /Users/dfeles/Documents/life/parti/cocos2d/cocos/3d/../renderer/ccGLStateCache.h:
 
-jni/../../Classes/Bird.hpp:
+jni/../../Classes/SimpleBird.hpp:
 
 jni/../../Classes/FastNoise.h:
+
+jni/../../Classes/Footer.hpp:
 
 /Users/dfeles/Documents/life/parti/cocos2d/cocos/audio/android/../include/SimpleAudioEngine.h:
 

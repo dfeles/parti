@@ -12,7 +12,9 @@
 /Users/dfeles/Documents/life/parti/proj.android/assets/blue.png \
 /Users/dfeles/Documents/life/parti/proj.android/assets/CloseNormal.png \
 /Users/dfeles/Documents/life/parti/proj.android/assets/CloseSelected.png \
+/Users/dfeles/Documents/life/parti/proj.android/assets/fog.png \
 /Users/dfeles/Documents/life/parti/proj.android/assets/fonts \
+/Users/dfeles/Documents/life/parti/proj.android/assets/footer \
 /Users/dfeles/Documents/life/parti/proj.android/assets/HelloWorld.png \
 /Users/dfeles/Documents/life/parti/proj.android/assets/res \
 /Users/dfeles/Documents/life/parti/proj.android/assets/birdAnim/birdAnim1.png \
@@ -23,4 +25,10 @@
 /Users/dfeles/Documents/life/parti/proj.android/assets/birdAnim/birdy.sketch \
 /Users/dfeles/Documents/life/parti/proj.android/assets/fonts/arial.ttf \
 /Users/dfeles/Documents/life/parti/proj.android/assets/fonts/Marker Felt.ttf \
+/Users/dfeles/Documents/life/parti/proj.android/assets/footer/footer.png \
+/Users/dfeles/Documents/life/parti/proj.android/assets/footer/house.png \
+/Users/dfeles/Documents/life/parti/proj.android/assets/footer/mountain.png \
+/Users/dfeles/Documents/life/parti/proj.android/assets/footer/mountain2.png \
+/Users/dfeles/Documents/life/parti/proj.android/assets/footer/tree.png \
+/Users/dfeles/Documents/life/parti/proj.android/assets/footer/wire.png \
 /Users/dfeles/Documents/life/parti/proj.android/bin/AndroidManifest.xml \

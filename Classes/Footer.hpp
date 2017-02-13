@@ -9,6 +9,7 @@
 #ifndef footer_hpp
 #define footer_hpp
 
+#include "cocos2d.h"
 #include <stdio.h>
 
 class Footer : public cocos2d::ParallaxNode
@@ -20,6 +21,6 @@ public:
     void initFooter();
     void updatePosition();
 private:
-    void addImg(std::string str, float deepness, int x = 0, int y = 0) ;
+    void addImg(std::string str, float deepness, int x = 0, int y = 0, float scale = 1.0) ;
 };
 #endif /* footer_hpp */

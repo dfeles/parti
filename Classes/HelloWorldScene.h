@@ -4,6 +4,7 @@
 #include "cocos2d.h"
 #include "SimpleBird.hpp"
 #include "Footer.hpp"
+#include "Magic.hpp"
 
 
 class HelloWorld : public cocos2d::Layer
@@ -20,6 +21,7 @@ public:
     void createBird(int x = -1, int y = -1);
     cocos2d::Vec2 direction = cocos2d::Vec2(0,0);
     cocos2d::Vec2 directionModulated = cocos2d::Vec2(0,0);
+    cocos2d::LayerGradient* backgroundLayer;
     
     Footer* footer;
     
